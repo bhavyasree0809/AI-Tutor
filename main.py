@@ -1,10 +1,11 @@
 
-print("Welcome to AI Tutor!")
+print("===== AI TUTOR =====")
 
 name = input("Enter your name: ")
-print(f"\nHello, {name}! Let's learn something new.")
+score = 0
 
-print("\nChoose a subject:")
+print("\nWelcome", name)
+print("Choose a subject:")
 print("1. Python")
 print("2. Mathematics")
 print("3. Chemistry")
@@ -13,34 +14,60 @@ print("4. English")
 choice = input("Enter your choice (1-4): ")
 
 if choice == "1":
-    print("\n--- Python Lesson 1 ---")
-    print("Python is a programming language.")
-    print("Example: print('Hello World')")
-    print("Quiz: Which function displays output?")
-    print("Answer: print()")
+    questions = [
+        ("Which function displays output in Python?", "print"),
+        ("Which keyword checks a condition?", "if"),
+        ("Which symbol is used for equality comparison?", "==")
+    ]
 
 elif choice == "2":
-    print("\n--- Mathematics Lesson 1 ---")
-    print("Addition means combining numbers.")
-    print("Example: 5 + 3 =", 5 + 3)
-    print("Quiz: What is 10 + 5?")
-    print("Answer: 15")
+    questions = [
+        ("What is 5 + 3?", "8"),
+        ("What is 10 * 2?", "20"),
+        ("What is 12 / 3?", "4")
+    ]
 
 elif choice == "3":
-    print("\n--- Chemistry Lesson 1 ---")
-    print("An atom is a basic unit of an element.")
-    print("Water has the chemical formula H2O.")
-    print("Quiz: What is the formula of water?")
-    print("Answer: H2O")
+    questions = [
+        ("What is the chemical formula of water?", "h2o"),
+        ("What is the symbol of oxygen?", "o"),
+        ("What is the symbol of hydrogen?", "h")
+    ]
 
 elif choice == "4":
-    print("\n--- English Lesson 1 ---")
-    print("Learn a simple sentence:")
-    print("I am learning English.")
-    print("Quiz: Fill in the blank: I ___ a student.")
-    print("Answer: am")
+    questions = [
+        ("Fill in the blank: I ___ a student.", "am"),
+        ("What is the plural of book?", "books"),
+        ("What is the opposite of hot?", "cold")
+    ]
 
 else:
-    print("Invalid choice. Please select 1 to 4.")
+    questions = []
+    print("Invalid choice!")
 
-print("\nThank you for learning with AI Tutor!")
+if questions:
+    print("\n===== QUIZ START =====")
+
+    for question, answer in questions:
+        print("\n", question)
+        user_answer = input("Your answer: ").strip().lower()
+
+        if user_answer == answer:
+            print("Correct answer!")
+            score += 1
+        else:
+            print("Incorrect!")
+            print("Correct answer:", answer)
+
+    print("\n===== QUIZ RESULT =====")
+    print("Student:", name)
+    print("Your score:", score, "/", len(questions))
+
+    if score == len(questions):
+        print("Excellent work!")
+    elif score >= 2:
+        print("Good job! Keep practising.")
+    else:
+        print("Keep learning. You can improve!")
+
+print("\nThank you for using AI Tutor!")
